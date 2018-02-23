@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pong"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        Title="MainWindow" Height="600" Width="800">
+    <Canvas Width="500" Height="500" Name="GameCanvas" Background="Honeydew">
+
+        <Rectangle Height="20" Width="80" Fill="Blue" 
+                       Canvas.Left="210" 
+                       Canvas.Top="0"
+                       Name="TopPaddle">
+        </Rectangle>
         
-    </Grid>
+        <Rectangle Height="20" Width="80" Fill="Red" 
+                   Canvas.Bottom="0"
+                   Canvas.Left="210"
+                   Name="BottomPaddle"></Rectangle>
+        <Ellipse Width="20" Height="20" Fill="Black" 
+                 Canvas.Top="{Binding Y}" 
+                 Canvas.Left="{Binding X}"
+                 Name="Ball"></Ellipse>
+
+    </Canvas>
+    
 </Window>
