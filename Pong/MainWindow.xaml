@@ -5,24 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pong"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
-    <Canvas Width="500" Height="500" Name="GameCanvas" Background="Honeydew">
-
-        <Rectangle Height="20" Width="80" Fill="Blue" 
-                       Canvas.Left="210" 
-                       Canvas.Top="0"
-                       Name="TopPaddle">
-        </Rectangle>
+        Title="Net Breakout Pong" Height="600" Width="800" ResizeMode="NoResize" 
+        SizeToContent="WidthAndHeight" Topmost="False" WindowState="Normal" 
+       Icon="./Resources/pong.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         
-        <Rectangle Height="20" Width="80" Fill="Red" 
-                   Canvas.Bottom="0"
-                   Canvas.Left="210"
-                   Name="BottomPaddle"></Rectangle>
-        <Ellipse Width="20" Height="20" Fill="Black" 
-                 Canvas.Top="{Binding Y}" 
-                 Canvas.Left="{Binding X}"
-                 Name="Ball"></Ellipse>
-
-    </Canvas>
+        <!--This canvas is the gameplay area-->
+        <Canvas Grid.Column="1" Grid.RowSpan="2" Width="500" Height="600" Name="GameCanvas" Background="Honeydew">
+            <!--This is the top paddle on the screen-->
+            <Rectangle Height="15" Width="80" Fill="Blue"
+                           RadiusX="7" RadiusY="7"
+                           Canvas.Left="210" Canvas.Top="0"         
+                           Name="TopPaddle">
+            </Rectangle>
     
+            <!--This is the bottom paddle on the screen-->
+            <Rectangle Height="15" Width="80" Fill="Red" 
+                           RadiusX="7" RadiusY="7"
+                           Canvas.Bottom="0" Canvas.Left="210"
+                           Name="BottomPaddle"></Rectangle>
+            
+            <!--This is a ball-->
+            <Ellipse Width="20" Height="20" Fill="Black" 
+                         Canvas.Top="{Binding Y}" 
+                         Canvas.Left="{Binding X}"
+                         Name="Ball"></Ellipse>
+        </Canvas>
+        
+        <!--This is Player one's score-->
+        <TextBlock Grid.Column="0" Height="80" Width="140" FontSize="30" VerticalAlignment="Bottom" Margin="0,0,0,10" TextAlignment="Center">Player 1 <LineBreak/> Score</TextBlock>
+        <TextBlock Name="p1Score" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Height="40" Width="40" FontSize="30" TextAlignment="Center" >0</TextBlock>
+        
+        <!--This is player two's score-->
+        <TextBlock Grid.Column="2" Height="80" Width="140" FontSize="30" VerticalAlignment="Bottom" Margin="0,0,0,10" TextAlignment="Center">Player 2 <LineBreak/> Score</TextBlock>
+        <TextBlock Name="p2Score" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Height="40" Width="40" FontSize="30" TextAlignment="Center" >0</TextBlock>
+    </Grid>
 </Window>

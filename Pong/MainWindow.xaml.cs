@@ -23,6 +23,7 @@ namespace Pong
         public MainWindow()
         {
             InitializeComponent();
+           
         }
     }
 }
